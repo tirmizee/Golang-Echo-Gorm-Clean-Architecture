@@ -10,4 +10,16 @@ type BaseModel struct {
 
 type User struct {
 	BaseModel
+	Username  string
+	Password  string
+	Email     string
+	FirstName string
+	LastName  string
+}
+
+type Role struct {
+	BaseModel
+	Code string
+	Name string
+	Desc string
 }
