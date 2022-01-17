@@ -1,0 +1,11 @@
+db:
+  host: 0.0.0.0
+  port: 1234
+  user: test
+  pass: pass
+
+redis:
+  host: 0.0.0.0
+  port: 1234
+  pass: 1234
+  index: 0
