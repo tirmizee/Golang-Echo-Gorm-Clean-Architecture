@@ -12,6 +12,6 @@ func NewHandler() *Handler {
 	return &Handler{}
 }
 
-func (h *Handler) AllUserHandler(c echo.Context) error {
+func (h *Handler) AllRoleHandler(c echo.Context) error {
 	return c.String(http.StatusOK, "hello world")
 }
