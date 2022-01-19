@@ -8,16 +8,17 @@ import (
 	"gorm.io/gorm"
 )
 
-func setupDB() *gorm.DB {
+func newGormDB() *gorm.DB {
 	return nil
 
 }
 
-func setupRoute(db *gorm.DB) *echo.Echo {
+func setupMiddlewares(e *echo.Echo) {
 
-	e := echo.New()
+}
 
-	return e
+func setupRoute(e *echo.Echo, db *gorm.DB) {
+
 }
 
 func initializeViper() {
@@ -40,9 +41,12 @@ func init() {
 func main() {
 
 	var (
-		db     = setupDB()
-		server = setupRoute(db)
+		server = echo.New()
+		gormDB = newGormDB()
 	)
+
+	setupMiddlewares(server)
+	setupRoute(server, gormDB)
 
 	server.Logger.Fatal(server.Start(":1323"))
 }
