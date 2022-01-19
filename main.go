@@ -24,5 +24,7 @@ func main() {
 		server = setupRoute(db)
 	)
 
+	// server.GET("/users", HandlerPOST)
+
 	server.Logger.Fatal(server.Start(":1323"))
 }
