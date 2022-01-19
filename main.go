@@ -1,14 +1,28 @@
 package main
 
-import "gorm.io/gorm"
+import (
+	"github.com/labstack/echo/v4"
+	"gorm.io/gorm"
+)
 
-func initDB() *gorm.DB {
+func setupDB() *gorm.DB {
 	return nil
 
 }
 
+func setupRoute(db *gorm.DB) *echo.Echo {
+
+	e := echo.New()
+
+	return e
+}
+
 func main() {
 
-	initDB()
+	var (
+		db     = setupDB()
+		server = setupRoute(db)
+	)
 
+	server.Logger.Fatal(server.Start(":1323"))
 }
