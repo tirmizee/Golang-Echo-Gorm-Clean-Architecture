@@ -13,7 +13,7 @@ func newGormDB() *gorm.DB {
 
 }
 
-func setupMiddlewares(e *echo.Echo) {
+func setupMiddleware(e *echo.Echo) {
 
 }
 
@@ -45,7 +45,7 @@ func main() {
 		gormDB = newGormDB()
 	)
 
-	setupMiddlewares(server)
+	setupMiddleware(server)
 	setupRoute(server, gormDB)
 
 	server.Logger.Fatal(server.Start(":1323"))
