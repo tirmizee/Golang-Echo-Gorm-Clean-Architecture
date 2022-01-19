@@ -1,7 +1,6 @@
 package configs
 
 import (
-	"strings"
 	"time"
 
 	"github.com/spf13/viper"
@@ -39,20 +38,6 @@ func initializeConfigProp() {
 	RdConfig.Port = viper.GetString("")
 }
 
-func initializeViper() {
-
-	viper.AddConfigPath(".")
-	viper.SetConfigType("yaml")
-	viper.AutomaticEnv()
-	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
-
-	if err := viper.ReadInConfig(); err != nil {
-		panic(err)
-	}
-
-}
-
 func init() {
-	initializeViper()
 	initializeConfigProp()
 }
