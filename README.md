@@ -1,5 +1,6 @@
 # Golang-Echo-Gorm-Clean-Architecture
 
+Implementation of Clean Architecture in Golang projects.
 
 ### Install dependencies
 - go mod init clean-architect
