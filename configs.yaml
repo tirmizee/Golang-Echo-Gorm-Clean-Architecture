@@ -1,8 +1,9 @@
 db:
   host: 0.0.0.0
-  port: 1234
-  user: test
+  port: 3306
+  user: user
   pass: pass
+  dbname: example
 
 redis:
   host: 0.0.0.0
