@@ -17,3 +17,7 @@ func NewRoleRepository(db *gorm.DB) *roleRepository {
 func (r *roleRepository) FindById(id int) (*models.Role, error) {
 	return nil, nil
 }
+
+func (r *roleRepository) FindAll() ([]models.Role, error) {
+	return nil, nil
+}
