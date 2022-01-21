@@ -17,7 +17,7 @@ Implementation of Clean Architecture in Golang RestAPI projects.
     │   │   ├── data.go
     │   │   ├── service.go
     │   │   └── handler.go
-    │   └── role
+    │   ├── role
     │   │   ├── data.go
     │   │   ├── service.go
     │   │   └── handler.go
