@@ -58,7 +58,7 @@ func initDB() {
 	}
 }
 
-func initMigrate() {
+func initMigration() {
 	db.AutoMigrate(
 		&models.User{},
 		&models.Role{})
@@ -66,5 +66,5 @@ func initMigrate() {
 
 func init() {
 	initDB()
-	initMigrate()
+	initMigration()
 }
