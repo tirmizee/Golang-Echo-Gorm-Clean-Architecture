@@ -31,13 +31,7 @@ func SetupRoute(e *echo.Echo) {
 		roleHandler = role.NewHandler(roleService)
 	)
 
-	_ = userRepo
-	_ = roleRepo
-
-	_ = userService
-	_ = roleService
-
-	_ = userHandler
-	_ = roleHandler
+	e.GET("/users", userHandler.AllUserHandler)
+	e.GET("/roles", roleHandler.AllRoleHandler)
 
 }
