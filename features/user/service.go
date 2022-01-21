@@ -1,12 +1,11 @@
 package user
 
 import (
-	"clean-architect/models"
 	"clean-architect/repositories"
 )
 
 type UserService interface {
-	AllUser() ([]models.User, error)
+	AllUser() ([]UserRes, error)
 }
 
 type userService struct {
@@ -19,12 +18,24 @@ func NewUserService(u repositories.UserRepository) *userService {
 	}
 }
 
-func (s *userService) AllUser() ([]models.User, error) {
+func (s *userService) AllUser() ([]UserRes, error) {
 
 	users, err := s.userRepo.FindAll()
 	if err != nil {
 		return nil, err
 	}
 
-	return users, nil
+	res := make([]UserRes, 0)
+	for _, user := range users {
+		item := UserRes{
+			Id:        user.ID,
+			Username:  user.Username,
+			Password:  user.Password,
+			FirstName: user.FirstName,
+			LastName:  user.LastName,
+		}
+		res = append(res, item)
+	}
+
+	return res, nil
 }
