@@ -6,3 +6,6 @@ start-db:
 stop-db:
 	docker compose down
 	echo 'db is stopped'
+
+start-app:
+	go run .

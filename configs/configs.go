@@ -1,6 +1,7 @@
 package configs
 
 import (
+	"strings"
 	"time"
 
 	"github.com/spf13/viper"
@@ -36,7 +37,7 @@ type RedisConfigProp struct {
 	Pass string
 }
 
-func initializeDbConfigProp() {
+func initDbConfigProp() {
 	dbConfig.Host = viper.GetString("db.host")
 	dbConfig.Port = viper.GetString("db.port")
 	dbConfig.User = viper.GetString("db.user")
@@ -45,18 +46,31 @@ func initializeDbConfigProp() {
 	dbConfig.MaxPool = viper.GetInt("db.pool.max")
 	dbConfig.IdlePool = viper.GetInt("db.pool.idle")
 	dbConfig.MaxLifetime = viper.GetDuration("db.pool.lifetime")
-	rdConfig.Host = viper.GetString("")
-	rdConfig.Port = viper.GetString("")
-	rdConfig.Pass = viper.GetString("")
 }
 
-func initializeRdConfigProp() {
-	rdConfig.Host = viper.GetString("")
-	rdConfig.Port = viper.GetString("")
-	rdConfig.Pass = viper.GetString("")
+func initRdConfigProp() {
+	rdConfig.Host = viper.GetString("redis.host")
+	rdConfig.Port = viper.GetString("redis.port")
+	rdConfig.Pass = viper.GetString("redis.pass")
+}
+
+func initializeViper() {
+
+	viper.AddConfigPath(".")      // path
+	viper.SetConfigName("config") // filename
+	viper.SetConfigType("yaml")   // filetype
+
+	viper.AutomaticEnv()
+	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
+
+	if err := viper.ReadInConfig(); err != nil {
+		panic(err)
+	}
+
 }
 
 func init() {
-	initializeDbConfigProp()
-	initializeRdConfigProp()
+	initializeViper()
+	initDbConfigProp()
+	initRdConfigProp()
 }

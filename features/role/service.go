@@ -17,5 +17,22 @@ func NewRoleService(r repositories.RoleRepository) *roleService {
 }
 
 func (s *roleService) AllRole() ([]RoleRes, error) {
-	return nil, nil
+
+	roles, err := s.roleRepo.FindAll()
+	if err != nil {
+		return nil, err
+	}
+
+	// manual map dto
+	var res []RoleRes = make([]RoleRes, len(roles))
+	for _, role := range roles {
+		item := RoleRes{
+			Code: role.Code,
+			Name: role.Name,
+			Desc: role.Desc,
+		}
+		res = append(res, item)
+	}
+
+	return res, nil
 }

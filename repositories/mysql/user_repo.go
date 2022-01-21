@@ -2,6 +2,7 @@ package mysql
 
 import (
 	"clean-architect/models"
+	"fmt"
 
 	"gorm.io/gorm"
 )
@@ -19,5 +20,14 @@ func (r *userRepository) FindById(id int) (*models.User, error) {
 }
 
 func (r *userRepository) FindAll() ([]models.User, error) {
-	return nil, nil
+
+	var users []models.User
+
+	if result := r.db.Find(&users); result.Error != nil {
+		return nil, result.Error
+	} else {
+		fmt.Println(result.RowsAffected)
+	}
+
+	return users, nil
 }

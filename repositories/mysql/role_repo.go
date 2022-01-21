@@ -19,5 +19,12 @@ func (r *roleRepository) FindById(id int) (*models.Role, error) {
 }
 
 func (r *roleRepository) FindAll() ([]models.Role, error) {
-	return nil, nil
+
+	var roles []models.Role
+
+	if result := r.db.Find(&roles); result.Error != nil {
+		return nil, result.Error
+	}
+
+	return roles, nil
 }

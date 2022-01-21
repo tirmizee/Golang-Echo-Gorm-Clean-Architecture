@@ -17,5 +17,11 @@ func NewHandler(s UserService) *Handler {
 }
 
 func (h *Handler) AllUserHandler(c echo.Context) error {
-	return c.String(http.StatusOK, "hello world")
+
+	res, err := h.service.AllUser()
+	if err != nil {
+		return err
+	}
+
+	return c.JSON(http.StatusOK, res)
 }

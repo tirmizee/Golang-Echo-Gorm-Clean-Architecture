@@ -1,3 +1,7 @@
 package role
 
-type RoleRes struct{}
+type RoleRes struct {
+	Code string
+	Name string
+	Desc string
+}

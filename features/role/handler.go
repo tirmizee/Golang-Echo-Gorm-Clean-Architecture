@@ -17,5 +17,11 @@ func NewHandler(s RoleService) *Handler {
 }
 
 func (h *Handler) AllRoleHandler(c echo.Context) error {
-	return c.String(http.StatusOK, "hello world")
+
+	res, err := h.service.AllRole()
+	if err != nil {
+		return err
+	}
+
+	return c.JSON(http.StatusOK, res)
 }

@@ -20,5 +20,11 @@ func NewUserService(u repositories.UserRepository) *userService {
 }
 
 func (s *userService) AllUser() ([]models.User, error) {
-	return nil, nil
+
+	users, err := s.userRepo.FindAll()
+	if err != nil {
+		return nil, err
+	}
+
+	return users, nil
 }
