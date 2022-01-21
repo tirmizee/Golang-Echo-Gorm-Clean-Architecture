@@ -11,6 +11,14 @@ var (
 	rdConfig RedisConfigProp
 )
 
+func GetDbConfigProp() DBConfigProp {
+	return dbConfig
+}
+
+func GetRdConfigProp() DBConfigProp {
+	return dbConfig
+}
+
 type DBConfigProp struct {
 	Host        string
 	Port        string
@@ -51,12 +59,4 @@ func initializeRdConfigProp() {
 func init() {
 	initializeDbConfigProp()
 	initializeRdConfigProp()
-}
-
-func GetDbConfigProp() DBConfigProp {
-	return dbConfig
-}
-
-func GetRdConfigProp() DBConfigProp {
-	return dbConfig
 }
