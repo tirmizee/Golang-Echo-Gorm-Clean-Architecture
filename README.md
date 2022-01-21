@@ -8,6 +8,7 @@ Implementation of Clean Architecture in Golang RestAPI projects.
 ### Project structure
 
     ├── main.go
+    ├── db
     ├── configs
     ├── middlewares
     ├── routes
