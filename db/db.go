@@ -2,7 +2,7 @@ package db
 
 import (
 	"clean-architect/configs"
-	"clean-architect/models"
+	"clean-architect/repositories/models"
 	"fmt"
 	"time"
 

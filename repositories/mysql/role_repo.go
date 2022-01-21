@@ -1,7 +1,7 @@
 package mysql
 
 import (
-	"clean-architect/models"
+	"clean-architect/repositories/models"
 
 	"gorm.io/gorm"
 )
