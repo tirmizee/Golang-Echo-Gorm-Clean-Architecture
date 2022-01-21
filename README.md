@@ -28,3 +28,19 @@ Implementation of Clean Architecture in Golang RestAPI projects.
     │   ├── mysql
     │   │   ├── user_repo.go
     │   │   └── role_repo.go
+
+### main.go 
+
+```go
+
+func main() {
+
+	var server = echo.New()
+
+	routes.SetupMiddleware(server)
+	routes.SetupRoute(server)
+
+	server.Logger.Fatal(server.Start(":8080"))
+}
+
+```
