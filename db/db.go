@@ -49,15 +49,17 @@ func NewGormDB() *gorm.DB {
 		sqlDB.SetConnMaxLifetime(time.Hour)
 	}
 
-	migrateData(db)
+	// migrate table
+	db.AutoMigrate(
+		&models.User{},
+		&models.Role{})
+
+	seedData(db)
 
 	return db
 }
 
-func migrateData(db *gorm.DB) {
-	db.AutoMigrate(
-		&models.User{},
-		&models.Role{})
+func seedData(db *gorm.DB) {
 
 	db.Where("1 = 1").Delete(&models.Role{})
 	db.Where("1 = 1").Delete(&models.User{})
