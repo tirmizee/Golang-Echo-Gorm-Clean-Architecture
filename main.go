@@ -1,6 +1,7 @@
 package main
 
 import (
+	"clean-architect/routes"
 	"strings"
 
 	"github.com/labstack/echo/v4"
@@ -27,6 +28,9 @@ func init() {
 func main() {
 
 	var server = echo.New()
+
+	routes.SetupMiddleware(server)
+	routes.SetupRoute(server)
 
 	server.Logger.Fatal(server.Start(":1323"))
 }

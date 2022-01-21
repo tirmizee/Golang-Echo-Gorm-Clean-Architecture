@@ -10,6 +10,11 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+func SetupMiddleware(e *echo.Echo) {
+	// global or root middleware
+
+}
+
 func SetupRoute(e *echo.Echo) {
 
 	// repository
@@ -31,6 +36,7 @@ func SetupRoute(e *echo.Echo) {
 		roleHandler = role.NewHandler(roleService)
 	)
 
+	// routes
 	e.GET("/users", userHandler.AllUserHandler)
 	e.GET("/roles", roleHandler.AllRoleHandler)
 
