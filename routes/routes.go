@@ -2,6 +2,8 @@ package routes
 
 import (
 	"clean-architect/db"
+	"clean-architect/features/role"
+	"clean-architect/features/user"
 	"clean-architect/repositories"
 	"clean-architect/repositories/mysql"
 
@@ -17,7 +19,25 @@ func SetupRoute(e *echo.Echo) {
 		roleRepo repositories.RoleRepository = mysql.NewRoleRepository(gormDB)
 	)
 
+	// service
+	var (
+		userService = user.NewUserService(userRepo)
+		roleService = role.NewRoleService(roleRepo)
+	)
+
+	// handler or controller
+	var (
+		userHandler = user.NewHandler(userService)
+		roleHandler = role.NewHandler(roleService)
+	)
+
 	_ = userRepo
 	_ = roleRepo
+
+	_ = userService
+	_ = roleService
+
+	_ = userHandler
+	_ = roleHandler
 
 }

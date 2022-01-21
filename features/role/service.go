@@ -1,16 +1,21 @@
 package role
 
-type Service interface {
-	AllRole() *RoleRes
+import "clean-architect/repositories"
+
+type RoleService interface {
+	AllRole() ([]RoleRes, error)
 }
 
-type service struct {
+type roleService struct {
+	roleRepo repositories.RoleRepository
 }
 
-func NewService() Service {
-	return &service{}
+func NewRoleService(r repositories.RoleRepository) *roleService {
+	return &roleService{
+		roleRepo: r,
+	}
 }
 
-func (s *service) AllRole() *RoleRes {
-	return nil
+func (s *roleService) AllRole() ([]RoleRes, error) {
+	return nil, nil
 }

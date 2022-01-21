@@ -6,10 +6,14 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-type Handler struct{}
+type Handler struct {
+	service UserService
+}
 
-func NewHandler() *Handler {
-	return &Handler{}
+func NewHandler(s UserService) *Handler {
+	return &Handler{
+		service: s,
+	}
 }
 
 func (h *Handler) AllUserHandler(c echo.Context) error {
