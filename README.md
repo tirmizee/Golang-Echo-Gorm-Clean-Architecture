@@ -32,18 +32,4 @@ Implementation of Clean Architecture in Golang RestAPI projects.
     ├── docker-compose.yaml
     ├── Makefile
 
-### main.go 
 
-```go
-
-func main() {
-
-	var server = echo.New()
-
-	routes.SetupMiddleware(server)
-	routes.SetupRoute(server)
-
-	server.Logger.Fatal(server.Start(":8080"))
-}
-
-```
