@@ -10,13 +10,7 @@ import (
 	"gorm.io/gorm"
 )
 
-var db *gorm.DB
-
-func GormDB() *gorm.DB {
-	return db
-}
-
-func initDB() *gorm.DB {
+func NewGormDB() *gorm.DB {
 
 	// dns config
 	dns := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
@@ -55,12 +49,12 @@ func initDB() *gorm.DB {
 		sqlDB.SetConnMaxLifetime(time.Hour)
 	}
 
-	return db
+	migrateData(db)
 
+	return db
 }
 
-func migrateData() {
-
+func migrateData(db *gorm.DB) {
 	db.AutoMigrate(
 		&models.User{},
 		&models.Role{})
@@ -72,9 +66,4 @@ func migrateData() {
 	db.Create(&models.User{Username: "kiskdifw", Password: "123", Email: "kiskdifw@hotmail.com", FirstName: "poikue", LastName: "poiloipuy"})
 	db.Create(&models.Role{Code: "R001", Name: "admin", Desc: "admin"})
 	db.Create(&models.Role{Code: "R002", Name: "user", Desc: "user"})
-}
-
-func init() {
-	db = initDB()
-	migrateData()
 }

@@ -19,7 +19,7 @@ func SetupRoute(e *echo.Echo) {
 
 	// repository
 	var (
-		gormDB                               = db.GormDB()
+		gormDB                               = db.NewGormDB()
 		userRepo repositories.UserRepository = mysql.NewUserRepository(gormDB)
 		roleRepo repositories.RoleRepository = mysql.NewRoleRepository(gormDB)
 	)
@@ -38,6 +38,8 @@ func SetupRoute(e *echo.Echo) {
 
 	// routes
 	e.GET("/users", userHandler.AllUserHandler)
+	e.GET("/users/:id", userHandler.AllUserHandler)
 	e.GET("/roles", roleHandler.AllRoleHandler)
+	e.GET("/roles/:id", userHandler.AllUserHandler)
 
 }
