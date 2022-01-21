@@ -8,10 +8,12 @@ import (
 	"clean-architect/repositories/mysql"
 
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 func SetupMiddleware(e *echo.Echo) {
 	// global or root middleware
+	e.Use(middleware.RequestID())
 
 }
 
