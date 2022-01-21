@@ -8,14 +8,14 @@ Implementation of Clean Architecture in Golang RestAPI projects.
 
 
 
-├── api
-│   ├── handler
-│   │   ├── handler.go
-│   │   ├── helpers.go
-│   │   └── model.go
-│   └── middleware
-│       └── middleware.go
-├── cloudformation
-│   └── apigateway
-│       ├── apig.yaml
-│       └── create_apigateway.sh
+    ├── api
+    │   ├── handler
+    │   │   ├── handler.go
+    │   │   ├── helpers.go
+    │   │   └── model.go
+    │   └── middleware
+    │       └── middleware.go
+    ├── cloudformation
+    │   └── apigateway
+    │       ├── apig.yaml
+    │       └── create_apigateway.sh
