@@ -24,12 +24,39 @@ type Role struct {
 	Desc string
 }
 
-type Produc struct{}
+type Produc struct {
+	BaseModel
+	Name            string
+	Alias           string
+	SortDescription string
+	FullDescription string
+	CategoryID      uint
+	BrandID         uint
+}
 
-type ProducDetail struct{}
+type ProducDetail struct {
+	BaseModel
+	Name  string
+	Value string
+}
 
-type ProductImage struct{}
+type ProductImage struct {
+	BaseModel
+	Name     string
+	Url      string
+	Path     string
+	ProducID uint
+}
 
-type Category struct{}
+type Category struct {
+	BaseModel
+	Name  string
+	Alias string
+	Image string
+}
 
-type Brand struct{}
+type Brand struct {
+	BaseModel
+	Name string
+	Logo string
+}
