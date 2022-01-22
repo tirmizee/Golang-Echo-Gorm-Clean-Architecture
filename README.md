@@ -14,11 +14,11 @@ Implementation of Clean Architecture in Golang RestAPI projects.
     ├── routes
     │   └── route.go                // routes
     ├── features
-    │   ├── user
+    │   ├── user                    // user module
     │   │   ├── data.go             // request and response data
     │   │   ├── service.go          // business logic
     │   │   └── handler.go    
-    │   ├── role
+    │   ├── role                    // role module
     │   │   ├── data.go             // request and response data
     │   │   ├── service.go          // business logic
     │   │   └── handler.go
