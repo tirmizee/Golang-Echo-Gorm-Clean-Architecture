@@ -7,28 +7,28 @@ Implementation of Clean Architecture in Golang RestAPI projects.
 
 ### Project structure
 
-    ├── main.go
+    ├── main.go                     // running
     ├── db
-    ├── configs
+    ├── configs                     // config property (read config file to struct)
     ├── middlewares
     ├── routes
-    │   └── route.go
+    │   └── route.go                // routes
     ├── features
     │   ├── user
-    │   │   ├── data.go
-    │   │   ├── service.go
-    │   │   └── handler.go
+    │   │   ├── data.go             // request and response data
+    │   │   ├── service.go          // business logic
+    │   │   └── handler.go    
     │   ├── role
-    │   │   ├── data.go
-    │   │   ├── service.go
+    │   │   ├── data.go             // request and response data
+    │   │   ├── service.go          // business logic
     │   │   └── handler.go
     ├── repositories
-    │   ├── models.go
-    │   ├── user_repo.go      // interface
-    │   ├── role_repo.go      // interface
+    │   ├── models.go               // models
+    │   ├── user_repo.go            // repo interface
+    │   ├── role_repo.go            // repo interface
     │   ├── mysql
-    │   │   ├── user_repo.go  // implement
-    │   │   └── role_repo.go  // implement
+    │   │   ├── user_repo.go        // repo implement
+    │   │   └── role_repo.go        // repo implement
     ├── config.yaml
     ├── docker-compose.yaml
     ├── Makefile
