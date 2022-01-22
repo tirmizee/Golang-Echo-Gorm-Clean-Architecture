@@ -23,11 +23,12 @@ Implementation of Clean Architecture in Golang RestAPI projects.
     │   │   ├── service.go
     │   │   └── handler.go
     ├── repositories
-    │   ├── models
-    │   │   └── models.go
+    │   ├── models.go
+    │   ├── user_repo.go      // interface
+    │   ├── role_repo.go      // interface
     │   ├── mysql
-    │   │   ├── user_repo.go
-    │   │   └── role_repo.go
+    │   │   ├── user_repo.go  // implement
+    │   │   └── role_repo.go  // implement
     ├── config.yaml
     ├── docker-compose.yaml
     ├── Makefile
