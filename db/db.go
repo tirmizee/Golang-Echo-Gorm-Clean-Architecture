@@ -1,8 +1,8 @@
 package db
 
 import (
-	"clean-architect/configs"
-	"clean-architect/repositories/models"
+	configs "clean-architect/config"
+	"clean-architect/repository"
 	"fmt"
 	"time"
 
@@ -51,8 +51,8 @@ func NewGormDB() *gorm.DB {
 
 	// migrate table
 	db.AutoMigrate(
-		&models.User{},
-		&models.Role{})
+		&repository.User{},
+		&repository.Role{})
 
 	seedData(db)
 
@@ -61,11 +61,11 @@ func NewGormDB() *gorm.DB {
 
 func seedData(db *gorm.DB) {
 
-	db.Where("1 = 1").Delete(&models.Role{})
-	db.Where("1 = 1").Delete(&models.User{})
+	db.Where("1 = 1").Delete(&repository.Role{})
+	db.Where("1 = 1").Delete(&repository.User{})
 
-	db.Create(&models.User{Username: "tirmizee", Password: "123", Email: "tirmizee@hotmail.com", FirstName: "pratya", LastName: "yeekhaday"})
-	db.Create(&models.User{Username: "kiskdifw", Password: "123", Email: "kiskdifw@hotmail.com", FirstName: "poikue", LastName: "poiloipuy"})
-	db.Create(&models.Role{Code: "R001", Name: "admin", Desc: "admin"})
-	db.Create(&models.Role{Code: "R002", Name: "user", Desc: "user"})
+	db.Create(&repository.User{Username: "tirmizee", Password: "123", Email: "tirmizee@hotmail.com", FirstName: "pratya", LastName: "yeekhaday"})
+	db.Create(&repository.User{Username: "kiskdifw", Password: "123", Email: "kiskdifw@hotmail.com", FirstName: "poikue", LastName: "poiloipuy"})
+	db.Create(&repository.Role{Code: "R001", Name: "admin", Desc: "admin"})
+	db.Create(&repository.Role{Code: "R002", Name: "user", Desc: "user"})
 }

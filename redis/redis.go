@@ -1,7 +1,7 @@
 package redis
 
 import (
-	"clean-architect/configs"
+	configs "clean-architect/config"
 
 	"github.com/go-redis/redis"
 )

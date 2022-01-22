@@ -1,16 +1,16 @@
 package role
 
-import "clean-architect/repositories"
+import "clean-architect/repository"
 
 type RoleService interface {
 	AllRole() ([]RoleRes, error)
 }
 
 type roleService struct {
-	roleRepo repositories.RoleRepository
+	roleRepo repository.RoleRepository
 }
 
-func NewRoleService(r repositories.RoleRepository) *roleService {
+func NewRoleService(r repository.RoleRepository) *roleService {
 	return &roleService{
 		roleRepo: r,
 	}
@@ -24,7 +24,7 @@ func (s *roleService) AllRole() ([]RoleRes, error) {
 	}
 
 	// manual map dto
-	var res []RoleRes = make([]RoleRes, len(roles))
+	var res []RoleRes = make([]RoleRes, 0)
 	for _, role := range roles {
 		item := RoleRes{
 			Code: role.Code,

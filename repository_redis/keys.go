@@ -1,4 +1,4 @@
-package redis
+package repositoryredis
 
 const (
 	KEY_USER = "USER::%s"

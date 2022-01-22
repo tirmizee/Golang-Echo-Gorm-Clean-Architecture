@@ -1,7 +1,8 @@
 package user
 
 import (
-	"clean-architect/repositories"
+	"clean-architect/repository"
+	repositoryredis "clean-architect/repository_redis"
 )
 
 type UserService interface {
@@ -9,12 +10,14 @@ type UserService interface {
 }
 
 type userService struct {
-	userRepo repositories.UserRepository
+	redisRepo *repositoryredis.RedisRepository
+	userRepo  repository.UserRepository
 }
 
-func NewUserService(u repositories.UserRepository) *userService {
+func NewUserService(r *repositoryredis.RedisRepository, u repository.UserRepository) *userService {
 	return &userService{
-		userRepo: u,
+		redisRepo: r,
+		userRepo:  u,
 	}
 }
 
