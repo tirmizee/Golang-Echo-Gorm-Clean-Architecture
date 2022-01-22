@@ -7,6 +7,6 @@ DB:
 
 redis:
   host: 0.0.0.0
-  port: 1234
-  pass: 1234
+  port: 7000
+  pass: password123
   index: 0

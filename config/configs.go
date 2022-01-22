@@ -16,8 +16,8 @@ func GetDbConfigProp() DBConfigProp {
 	return dbConfig
 }
 
-func GetRdConfigProp() DBConfigProp {
-	return dbConfig
+func GetRdConfigProp() RedisConfigProp {
+	return rdConfig
 }
 
 type DBConfigProp struct {
@@ -32,9 +32,10 @@ type DBConfigProp struct {
 }
 
 type RedisConfigProp struct {
-	Host string
-	Port string
-	Pass string
+	Host  string
+	Port  string
+	Pass  string
+	Index int
 }
 
 func initDbConfigProp() {
@@ -52,6 +53,7 @@ func initRdConfigProp() {
 	rdConfig.Host = viper.GetString("redis.host")
 	rdConfig.Port = viper.GetString("redis.port")
 	rdConfig.Pass = viper.GetString("redis.pass")
+	rdConfig.Index = viper.GetInt("redis.index")
 }
 
 func initializeViper() {

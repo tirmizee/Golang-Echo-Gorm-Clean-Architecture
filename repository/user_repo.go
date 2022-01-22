@@ -1,6 +1,6 @@
-package repositories
+package repository
 
-import "clean-architect/repositories/models"
+import "clean-architect/repository/models"
 
 type UserRepository interface {
 	FindById(id int) (*models.User, error)

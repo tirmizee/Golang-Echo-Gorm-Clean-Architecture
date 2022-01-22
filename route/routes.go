@@ -2,10 +2,10 @@ package routes
 
 import (
 	"clean-architect/db"
-	"clean-architect/features/role"
-	"clean-architect/features/user"
-	"clean-architect/repositories"
-	"clean-architect/repositories/mysql"
+	"clean-architect/feature/role"
+	"clean-architect/feature/user"
+	"clean-architect/repository"
+	"clean-architect/repository/mysql"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -21,9 +21,9 @@ func SetupRoute(e *echo.Echo) {
 
 	// repository
 	var (
-		gormDB                               = db.NewGormDB()
-		userRepo repositories.UserRepository = mysql.NewUserRepository(gormDB)
-		roleRepo repositories.RoleRepository = mysql.NewRoleRepository(gormDB)
+		gormDB                             = db.NewGormDB()
+		userRepo repository.UserRepository = mysql.NewUserRepository(gormDB)
+		roleRepo repository.RoleRepository = mysql.NewRoleRepository(gormDB)
 	)
 
 	// service

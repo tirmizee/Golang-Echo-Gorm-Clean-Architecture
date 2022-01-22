@@ -3,9 +3,9 @@ package models
 import "time"
 
 type BaseModel struct {
-	ID         uint `gorm:"primarykey"`
-	CreateDate *time.Time
-	UpdateDate *time.Time
+	ID         uint       `gorm:"primarykey"`
+	CreateDate *time.Time `gorm:"column:create_date"`
+	UpdateDate *time.Time `gorm:"column:update_date"`
 }
 
 type User struct {
