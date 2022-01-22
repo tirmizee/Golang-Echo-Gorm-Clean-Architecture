@@ -1,1 +1,5 @@
 package redis
+
+func NewRedisClient() {
+
+}
