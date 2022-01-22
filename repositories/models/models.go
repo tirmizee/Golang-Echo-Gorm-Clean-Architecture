@@ -23,3 +23,13 @@ type Role struct {
 	Name string
 	Desc string
 }
+
+type Produc struct{}
+
+type ProducDetail struct{}
+
+type ProductImage struct{}
+
+type Category struct{}
+
+type Brand struct{}
