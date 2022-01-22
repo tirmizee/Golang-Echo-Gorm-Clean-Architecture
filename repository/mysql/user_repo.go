@@ -7,19 +7,19 @@ import (
 	"gorm.io/gorm"
 )
 
-type userRepository struct {
+type UserRepository struct {
 	db *gorm.DB
 }
 
-func NewUserRepository(db *gorm.DB) *userRepository {
-	return &userRepository{db: db}
+func NewUserRepository(db *gorm.DB) *UserRepository {
+	return &UserRepository{db: db}
 }
 
-func (r *userRepository) FindById(id int) (*repository.User, error) {
+func (r *UserRepository) FindById(id int) (*repository.User, error) {
 	return nil, nil
 }
 
-func (r *userRepository) FindAll() ([]repository.User, error) {
+func (r *UserRepository) FindAll() ([]repository.User, error) {
 
 	var users []repository.User
 

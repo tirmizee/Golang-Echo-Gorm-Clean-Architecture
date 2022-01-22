@@ -6,19 +6,19 @@ import (
 	"gorm.io/gorm"
 )
 
-type roleRepository struct {
+type RoleRepository struct {
 	db *gorm.DB
 }
 
-func NewRoleRepository(db *gorm.DB) *roleRepository {
-	return &roleRepository{db: db}
+func NewRoleRepository(db *gorm.DB) *RoleRepository {
+	return &RoleRepository{db: db}
 }
 
-func (r *roleRepository) FindById(id int) (*repository.Role, error) {
+func (r *RoleRepository) FindById(id int) (*repository.Role, error) {
 	return nil, nil
 }
 
-func (r *roleRepository) FindAll() ([]repository.Role, error) {
+func (r *RoleRepository) FindAll() ([]repository.Role, error) {
 
 	var roles []repository.Role
 

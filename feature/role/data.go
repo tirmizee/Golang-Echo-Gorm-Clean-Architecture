@@ -1,7 +1,7 @@
 package role
 
 type RoleRes struct {
-	Code string
-	Name string
-	Desc string
+	Code string `json:"code"`
+	Name string `json:"name"`
+	Desc string `json:"desc"`
 }

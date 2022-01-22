@@ -1,10 +1,10 @@
 package user
 
 type UserRes struct {
-	Id        uint
-	Username  string
-	Password  string
-	Email     string
-	FirstName string
-	LastName  string
+	Id        uint   `json:"id"`
+	Username  string `json:"username"`
+	Password  string `json:"password"`
+	Email     string `json:"email"`
+	FirstName string `json:"firstName"`
+	LastName  string `json:"lastName"`
 }
