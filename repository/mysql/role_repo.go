@@ -21,7 +21,6 @@ func (r *RoleRepository) FindById(id string) (*repository.Role, error) {
 	statement := r.db.Table("roles").Where("id = ?", id).First(&role)
 
 	if err := statement.Error; err != nil {
-
 		return nil, err
 	}
 
