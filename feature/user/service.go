@@ -3,10 +3,12 @@ package user
 import (
 	"clean-architect/repository"
 	repositoryredis "clean-architect/repository_redis"
+
+	"github.com/labstack/echo/v4"
 )
 
 type UserService interface {
-	AllUser() ([]UserRes, error)
+	AllUser(c echo.Context) ([]UserRes, error)
 }
 
 type userService struct {
@@ -21,7 +23,7 @@ func NewUserService(r *repositoryredis.RedisRepository, u repository.UserReposit
 	}
 }
 
-func (s *userService) AllUser() ([]UserRes, error) {
+func (s *userService) AllUser(c echo.Context) ([]UserRes, error) {
 
 	users, err := s.userRepo.FindAll()
 	if err != nil {

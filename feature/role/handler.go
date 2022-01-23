@@ -23,7 +23,7 @@ func (h *Handler) FindByIDHandler(c echo.Context) error {
 
 	id := c.Param("id")
 
-	res, err := h.service.FindByID(id)
+	res, err := h.service.FindByID(c, id)
 	if err != nil {
 
 		if errors.Is(err, gorm.ErrRecordNotFound) {
@@ -40,7 +40,7 @@ func (h *Handler) AllRoleHandler(c echo.Context) error {
 
 	log.InfoWithID(c, "AllRoleHandler", "dddd")
 
-	res, err := h.service.AllRole()
+	res, err := h.service.AllRole(c)
 	if err != nil {
 
 		if errors.Is(err, gorm.ErrRecordNotFound) {

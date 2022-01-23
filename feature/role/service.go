@@ -2,11 +2,13 @@ package role
 
 import (
 	"clean-architect/repository"
+
+	"github.com/labstack/echo/v4"
 )
 
 type RoleService interface {
-	AllRole() ([]RoleRes, error)
-	FindByID(id string) (*RoleRes, error)
+	AllRole(c echo.Context) ([]RoleRes, error)
+	FindByID(c echo.Context, id string) (*RoleRes, error)
 }
 
 type roleService struct {
@@ -19,7 +21,7 @@ func NewRoleService(r repository.RoleRepository) *roleService {
 	}
 }
 
-func (s *roleService) FindByID(id string) (*RoleRes, error) {
+func (s *roleService) FindByID(c echo.Context, id string) (*RoleRes, error) {
 
 	role, err := s.roleRepo.FindById(id)
 
@@ -38,7 +40,7 @@ func (s *roleService) FindByID(id string) (*RoleRes, error) {
 	return res, nil
 }
 
-func (s *roleService) AllRole() ([]RoleRes, error) {
+func (s *roleService) AllRole(c echo.Context) ([]RoleRes, error) {
 
 	roles, err := s.roleRepo.FindAll()
 	if err != nil {
