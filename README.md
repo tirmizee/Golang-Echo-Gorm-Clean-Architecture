@@ -8,8 +8,10 @@ Implementation of Clean Architecture in Golang RestAPI projects.
 ### Project structure
 
     ├── main.go                     // running
-    ├── db
-    ├── configs                     // config property (read all config file to struct)
+    ├── config                      
+    │   ├── config_prop.go          // config property (read all config file to struct)
+    │   ├── db                      // config db
+    │   └── redis                   // config redis
     ├── middlewares
     ├── routes
     │   └── route.go                // routes
