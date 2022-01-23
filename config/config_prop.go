@@ -58,9 +58,9 @@ func initRdConfigProp() {
 
 func initializeViper() {
 
-	viper.AddConfigPath(".")      // path
-	viper.SetConfigName("config") // filename
-	viper.SetConfigType("yaml")   // filetype
+	viper.AddConfigPath(".")      // file path
+	viper.SetConfigName("config") // file name
+	viper.SetConfigType("yaml")   // file extension
 
 	viper.AutomaticEnv()
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
