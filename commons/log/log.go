@@ -18,8 +18,7 @@ func ErrorWithRequestID(c echo.Context, i ...interface{}) {
 }
 
 func WarnWithRequestID(c echo.Context, i ...interface{}) {
-	messages := getMessages(c, i)
-	log.Warn(messages...)
+	log.Warn(getMessages(c, i)...)
 }
 
 func getRequestID(c echo.Context) string {
