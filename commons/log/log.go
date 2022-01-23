@@ -37,6 +37,4 @@ func getMessages(c echo.Context, i []interface{}) []interface{} {
 	return messages
 }
 
-func init() {
-
-}
+func init() {}
