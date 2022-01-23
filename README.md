@@ -36,3 +36,6 @@ Implementation of Clean Architecture in Golang RestAPI projects.
     ├── Makefile
 
 
+### Reference
+
+- https://about.sourcegraph.com/go/gophercon-2019-how-uber-go-es/
