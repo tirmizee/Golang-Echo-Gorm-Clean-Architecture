@@ -48,6 +48,6 @@ func SetupRoute(e *echo.Echo) {
 	g.GET("/users", userHandler.AllUserHandler)
 	g.GET("/users/:id", userHandler.AllUserHandler)
 	g.GET("/roles", roleHandler.AllRoleHandler)
-	g.GET("/roles/:id", userHandler.AllUserHandler)
+	g.GET("/roles/:id", roleHandler.FindByIDHandler)
 
 }

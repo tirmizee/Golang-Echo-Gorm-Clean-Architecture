@@ -14,8 +14,18 @@ func NewRoleRepository(db *gorm.DB) *RoleRepository {
 	return &RoleRepository{db: db}
 }
 
-func (r *RoleRepository) FindById(id int) (*repository.Role, error) {
-	return nil, nil
+func (r *RoleRepository) FindById(id string) (*repository.Role, error) {
+
+	var role repository.Role
+
+	statement := r.db.Table("roles").Where("id = ?", id).First(&role)
+
+	if err := statement.Error; err != nil {
+
+		return nil, err
+	}
+
+	return &role, nil
 }
 
 func (r *RoleRepository) FindAll() ([]repository.Role, error) {

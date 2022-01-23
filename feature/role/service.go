@@ -1,9 +1,12 @@
 package role
 
-import "clean-architect/repository"
+import (
+	"clean-architect/repository"
+)
 
 type RoleService interface {
 	AllRole() ([]RoleRes, error)
+	FindByID(id string) (*RoleRes, error)
 }
 
 type roleService struct {
@@ -14,6 +17,25 @@ func NewRoleService(r repository.RoleRepository) *roleService {
 	return &roleService{
 		roleRepo: r,
 	}
+}
+
+func (s *roleService) FindByID(id string) (*RoleRes, error) {
+
+	role, err := s.roleRepo.FindById(id)
+
+	if err != nil {
+		return nil, err
+	}
+
+	// manual map dto
+	res := &RoleRes{
+		ID:   role.ID,
+		Code: role.Code,
+		Name: role.Name,
+		Desc: role.Desc,
+	}
+
+	return res, nil
 }
 
 func (s *roleService) AllRole() ([]RoleRes, error) {
@@ -27,6 +49,7 @@ func (s *roleService) AllRole() ([]RoleRes, error) {
 	var res []RoleRes = make([]RoleRes, 0)
 	for _, role := range roles {
 		item := RoleRes{
+			ID:   role.ID,
 			Code: role.Code,
 			Name: role.Name,
 			Desc: role.Desc,

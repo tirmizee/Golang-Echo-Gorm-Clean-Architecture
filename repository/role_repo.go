@@ -1,6 +1,6 @@
 package repository
 
 type RoleRepository interface {
-	FindById(id int) (*Role, error)
+	FindById(id string) (*Role, error)
 	FindAll() ([]Role, error)
 }
