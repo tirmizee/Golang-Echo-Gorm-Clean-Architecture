@@ -10,7 +10,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func NewGormDB() *gorm.DB {
+func NewMysqlDB() *gorm.DB {
 
 	// dns config
 	dns := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",

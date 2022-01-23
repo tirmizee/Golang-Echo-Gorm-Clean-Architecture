@@ -1,10 +1,10 @@
 package route
 
 import (
-	"clean-architect/db"
+	"clean-architect/config/db"
+	"clean-architect/config/redis"
 	"clean-architect/feature/role"
 	"clean-architect/feature/user"
-	"clean-architect/redis"
 	"clean-architect/repository"
 	"clean-architect/repository/mysql"
 	repositoryredis "clean-architect/repository_redis"
@@ -23,7 +23,7 @@ func SetupRoute(e *echo.Echo) {
 
 	// repository
 	var (
-		gormDB      = db.NewGormDB()
+		gormDB      = db.NewMysqlDB()
 		redisClient = redis.NewRedisClient()
 
 		redisRepo *repositoryredis.RedisRepository = repositoryredis.NewRedisRepository(redisClient)

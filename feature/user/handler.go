@@ -25,3 +25,15 @@ func (h *Handler) AllUserHandler(c echo.Context) error {
 
 	return c.JSON(http.StatusOK, res)
 }
+
+func (h *Handler) FindByIDHandler(c echo.Context) error {
+
+	// id := c.QueryParam("id")
+
+	res, err := h.service.AllUser()
+	if err != nil {
+		return err
+	}
+
+	return c.JSON(http.StatusOK, res)
+}
