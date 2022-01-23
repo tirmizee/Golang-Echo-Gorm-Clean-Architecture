@@ -1,16 +1,16 @@
 package commons
 
-type HTTPError struct {
+type CustomError struct {
 	Code    string `json:"code"`
 	Message string `json:"message"`
 }
 
-func (e *HTTPError) Error() string {
+func (e *CustomError) Error() string {
 	return e.Code + ": " + e.Message
 }
 
-func NewHTTPError(code string, msg string) *HTTPError {
-	return &HTTPError{
+func NewCustomError(code string, msg string) *CustomError {
+	return &CustomError{
 		Code:    code,
 		Message: msg,
 	}
