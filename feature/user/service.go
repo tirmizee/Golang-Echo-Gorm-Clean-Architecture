@@ -9,6 +9,7 @@ import (
 
 type UserService interface {
 	AllUser(c echo.Context) ([]UserRes, error)
+	FindByID(c echo.Context, id string) (*UserRes, error)
 }
 
 type userService struct {
@@ -21,6 +22,10 @@ func NewUserService(r *repositoryredis.RedisRepository, u repository.UserReposit
 		redisRepo: r,
 		userRepo:  u,
 	}
+}
+
+func (s *userService) FindByID(c echo.Context, id string) (*UserRes, error) {
+	return nil, nil
 }
 
 func (s *userService) AllUser(c echo.Context) ([]UserRes, error) {

@@ -28,9 +28,9 @@ func (h *Handler) AllUserHandler(c echo.Context) error {
 
 func (h *Handler) FindByIDHandler(c echo.Context) error {
 
-	// id := c.QueryParam("id")
+	id := c.Param("id")
 
-	res, err := h.service.AllUser(c)
+	res, err := h.service.FindByID(c, id)
 	if err != nil {
 		return err
 	}

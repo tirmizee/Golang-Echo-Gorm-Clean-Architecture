@@ -66,6 +66,6 @@ func seedData(db *gorm.DB) {
 
 	db.Create(&repository.User{Username: "tirmizee", Password: "123", Email: "tirmizee@hotmail.com", FirstName: "pratya", LastName: "yeekhaday"})
 	db.Create(&repository.User{Username: "kiskdifw", Password: "123", Email: "kiskdifw@hotmail.com", FirstName: "poikue", LastName: "poiloipuy"})
-	db.Create(&repository.Role{Code: "R001", Name: "admin", Desc: "admin"})
-	db.Create(&repository.Role{Code: "R002", Name: "user", Desc: "user"})
+	// db.Create(&repository.Role{Code: "R001", Name: "admin", Desc: "admin"})
+	// db.Create(&repository.Role{Code: "R002", Name: "user", Desc: "user"})
 }

@@ -1,6 +1,6 @@
 package repository
 
 type UserRepository interface {
-	FindById(id int) (*User, error)
+	FindById(id string) (*User, error)
 	FindAll() ([]User, error)
 }

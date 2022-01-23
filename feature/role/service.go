@@ -4,6 +4,7 @@ import (
 	"clean-architect/repository"
 
 	"github.com/labstack/echo/v4"
+	"gorm.io/gorm"
 )
 
 type RoleService interface {
@@ -45,6 +46,10 @@ func (s *roleService) AllRole(c echo.Context) ([]RoleRes, error) {
 	roles, err := s.roleRepo.FindAll()
 	if err != nil {
 		return nil, err
+	}
+
+	if len(roles) == 0 {
+		return nil, gorm.ErrRecordNotFound
 	}
 
 	// manual map dto

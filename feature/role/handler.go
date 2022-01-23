@@ -20,6 +20,7 @@ func NewHandler(s RoleService) *Handler {
 }
 
 func (h *Handler) FindByIDHandler(c echo.Context) error {
+	log.InfoWithID(c, "FindByIDHandler")
 
 	id := c.Param("id")
 
@@ -37,8 +38,7 @@ func (h *Handler) FindByIDHandler(c echo.Context) error {
 }
 
 func (h *Handler) AllRoleHandler(c echo.Context) error {
-
-	log.InfoWithID(c, "AllRoleHandler", "dddd")
+	log.InfoWithID(c, "AllRoleHandler")
 
 	res, err := h.service.AllRole(c)
 	if err != nil {
