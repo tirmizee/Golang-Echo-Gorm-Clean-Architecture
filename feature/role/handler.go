@@ -1,6 +1,7 @@
 package role
 
 import (
+	"clean-architect/commons/log"
 	"errors"
 	"net/http"
 
@@ -36,6 +37,8 @@ func (h *Handler) FindByIDHandler(c echo.Context) error {
 }
 
 func (h *Handler) AllRoleHandler(c echo.Context) error {
+
+	log.InfoWithRequestID(c, "AllRoleHandler", "dddd")
 
 	res, err := h.service.AllRole()
 	if err != nil {
