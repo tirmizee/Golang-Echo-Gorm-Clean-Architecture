@@ -5,19 +5,19 @@ import (
 	"github.com/labstack/gommon/log"
 )
 
-func InfoWithRequestID(c echo.Context, i ...interface{}) {
+func InfoWithID(c echo.Context, i ...interface{}) {
 	log.Info(getMessages(c, i)...)
 }
 
-func DebugWithRequestID(c echo.Context, i ...interface{}) {
+func DebugWithID(c echo.Context, i ...interface{}) {
 	log.Debug(getMessages(c, i)...)
 }
 
-func ErrorWithRequestID(c echo.Context, i ...interface{}) {
+func ErrorWithID(c echo.Context, i ...interface{}) {
 	log.Error(getMessages(c, i)...)
 }
 
-func WarnWithRequestID(c echo.Context, i ...interface{}) {
+func WarnWithID(c echo.Context, i ...interface{}) {
 	log.Warn(getMessages(c, i)...)
 }
 
