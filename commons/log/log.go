@@ -6,18 +6,15 @@ import (
 )
 
 func InfoWithRequestID(c echo.Context, i ...interface{}) {
-	messages := getMessages(c, i)
-	log.Info(messages...)
+	log.Info(getMessages(c, i)...)
 }
 
 func DebugWithRequestID(c echo.Context, i ...interface{}) {
-	messages := getMessages(c, i)
-	log.Debug(messages...)
+	log.Debug(getMessages(c, i)...)
 }
 
 func ErrorWithRequestID(c echo.Context, i ...interface{}) {
-	messages := getMessages(c, i)
-	log.Error(messages...)
+	log.Error(getMessages(c, i)...)
 }
 
 func WarnWithRequestID(c echo.Context, i ...interface{}) {
