@@ -1,14 +1,14 @@
 package redis
 
 import (
-	configs "clean-architect/config"
+	"clean-architect/config"
 
 	"github.com/go-redis/redis"
 )
 
 func NewRedisClient() *redis.Client {
 
-	redisConfigProp := configs.GetRdConfigProp()
+	redisConfigProp := config.GetRdConfigProp()
 
 	client := redis.NewClient(&redis.Options{
 		Addr:     redisConfigProp.Host + ":" + redisConfigProp.Port,

@@ -1,7 +1,7 @@
 package db
 
 import (
-	configs "clean-architect/config"
+	"clean-architect/config"
 	"clean-architect/repository"
 	"fmt"
 	"time"
@@ -14,11 +14,11 @@ func NewMysqlDB() *gorm.DB {
 
 	// dns config
 	dns := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
-		configs.GetDbConfigProp().User,
-		configs.GetDbConfigProp().Pass,
-		configs.GetDbConfigProp().Host,
-		configs.GetDbConfigProp().Port,
-		configs.GetDbConfigProp().Dbname)
+		config.GetDbConfigProp().User,
+		config.GetDbConfigProp().Pass,
+		config.GetDbConfigProp().Host,
+		config.GetDbConfigProp().Port,
+		config.GetDbConfigProp().Dbname)
 
 	// mysql config
 	mysqlConfig := mysql.Config{
