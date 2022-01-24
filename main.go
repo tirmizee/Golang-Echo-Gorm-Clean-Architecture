@@ -10,6 +10,7 @@ func main() {
 
 	var server = echo.New()
 
+	route.SetupLogger(server)
 	route.SetupMiddleware(server)
 	route.SetupRoute(server)
 
