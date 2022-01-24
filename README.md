@@ -6,6 +6,8 @@ Implementation of Clean Architecture in Golang RestAPI projects. Maintaining a l
 
 ![Untitled Diagram](https://user-images.githubusercontent.com/15135199/150567366-5ea535bf-07ac-4049-a24b-44a0cd5c21cf.png)
 
+- <b>Handlers</b> are responsible for receiving requests from clients and sending responses back to to clients.
+
 ### Project structure
 
     ├── main.go                     // running
