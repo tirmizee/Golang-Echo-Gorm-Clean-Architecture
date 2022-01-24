@@ -2,8 +2,7 @@
 
 Implementation of Clean Architecture in Golang RestAPI projects. Maintaining a large codebase with maximum readability and minimal overhead is hard.
 
-
-
+### How to structure the code
 
 ![Untitled Diagram](https://user-images.githubusercontent.com/15135199/150567366-5ea535bf-07ac-4049-a24b-44a0cd5c21cf.png)
 
