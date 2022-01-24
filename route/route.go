@@ -2,12 +2,10 @@ package route
 
 import (
 	"clean-architect/config/db"
-	"clean-architect/config/redis"
 	"clean-architect/feature/role"
 	"clean-architect/feature/user"
 	"clean-architect/repository"
 	"clean-architect/repository/mysql"
-	repositoryredis "clean-architect/repository_redis"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -28,17 +26,15 @@ func SetupRoute(e *echo.Echo) {
 
 	// repository
 	var (
-		gormDB      = db.NewMysqlDB()
-		redisClient = redis.NewRedisClient()
+		gormDB = db.NewMysqlDB()
 
-		redisRepo *repositoryredis.RedisRepository = repositoryredis.NewRedisRepository(redisClient)
-		userRepo  repository.UserRepository        = mysql.NewUserRepository(gormDB)
-		roleRepo  repository.RoleRepository        = mysql.NewRoleRepository(gormDB)
+		userRepo repository.UserRepository = mysql.NewUserRepository(gormDB)
+		roleRepo repository.RoleRepository = mysql.NewRoleRepository(gormDB)
 	)
 
 	// service
 	var (
-		userService = user.NewUserService(redisRepo, userRepo)
+		userService = user.NewUserService(userRepo)
 		roleService = role.NewRoleService(roleRepo)
 	)
 
