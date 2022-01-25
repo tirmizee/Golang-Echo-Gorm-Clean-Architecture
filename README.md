@@ -40,6 +40,23 @@ Implementation of Clean Architecture in Golang RestAPI projects. Maintaining a l
     ├── docker-compose.yaml
     ├── Makefile
 
+### Start app func
+
+```go
+
+func main() {
+
+	var server = echo.New()
+
+	route.SetupLogger(server)
+	route.SetupMiddleware(server)
+	route.SetupRoute(server)
+
+	server.Logger.Fatal(server.Start(":8080"))
+}
+
+```
+
 ### Dependencies
 
 - github.com/labstack/echo/v4
