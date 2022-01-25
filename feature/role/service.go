@@ -3,6 +3,7 @@ package role
 import (
 	"clean-architect/repository"
 
+	"github.com/jinzhu/copier"
 	"github.com/labstack/echo/v4"
 	"gorm.io/gorm"
 )
@@ -52,17 +53,10 @@ func (s *roleService) AllRole(c echo.Context) ([]RoleRes, error) {
 		return nil, gorm.ErrRecordNotFound
 	}
 
-	// manual map dto
 	var res []RoleRes = make([]RoleRes, 0)
-	for _, role := range roles {
-		item := RoleRes{
-			ID:   role.ID,
-			Code: role.Code,
-			Name: role.Name,
-			Desc: role.Desc,
-		}
-		res = append(res, item)
-	}
+
+	// copy data to dto
+	copier.Copy(&res, &roles)
 
 	return res, nil
 }
