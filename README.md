@@ -40,6 +40,14 @@ Implementation of Clean Architecture in Golang RestAPI projects. Maintaining a l
     ├── docker-compose.yaml
     ├── Makefile
 
+### Dependencies
+
+- github.com/labstack/echo/v4
+- github.com/labstack/echo/v4/middleware
+- github.com/labstack/gommon/log
+- gorm.io/gorm
+- gorm.io/driver/mysql
+- github.com/jinzhu/copier
 
 ### Reference
 
