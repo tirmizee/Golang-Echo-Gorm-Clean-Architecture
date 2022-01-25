@@ -32,14 +32,10 @@ func (s *roleService) FindByID(c echo.Context, id string) (*RoleRes, error) {
 	}
 
 	// manual map dto
-	res := &RoleRes{
-		ID:   role.ID,
-		Code: role.Code,
-		Name: role.Name,
-		Desc: role.Desc,
-	}
+	var res RoleRes
+	copier.Copy(&res, &role)
 
-	return res, nil
+	return &res, nil
 }
 
 func (s *roleService) AllRole(c echo.Context) ([]RoleRes, error) {

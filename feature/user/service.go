@@ -3,6 +3,7 @@ package user
 import (
 	"clean-architect/repository"
 
+	"github.com/jinzhu/copier"
 	"github.com/labstack/echo/v4"
 )
 
@@ -33,16 +34,7 @@ func (s *userService) AllUser(c echo.Context) ([]UserRes, error) {
 	}
 
 	res := make([]UserRes, 0)
-	for _, user := range users {
-		item := UserRes{
-			Id:        user.ID,
-			Username:  user.Username,
-			Password:  user.Password,
-			FirstName: user.FirstName,
-			LastName:  user.LastName,
-		}
-		res = append(res, item)
-	}
+	copier.Copy(&res, &users)
 
 	return res, nil
 }
