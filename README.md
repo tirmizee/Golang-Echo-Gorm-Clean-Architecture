@@ -30,7 +30,7 @@ Implementation of Clean Architecture in Golang RestAPI projects. Maintaining a l
     │   │   ├── service.go          // business logic
     │   │   └── handler.go
     ├── repositories
-    │   ├── models.go               // models
+    │   ├── models.go               // models or entities
     │   ├── user_repo.go            // repo interface
     │   ├── role_repo.go            // repo interface
     │   ├── mysql
