@@ -40,7 +40,7 @@ Implementation of Clean Architecture in Golang RestAPI projects. Maintaining a l
     ├── docker-compose.yaml
     ├── Makefile
 
-### Start app func
+### Start app function
 
 ```go
 
