@@ -14,3 +14,10 @@ func NewCustomError(code string) *CustomError {
 		Code: code,
 	}
 }
+
+func NewCustomErrorMsg(code string, msg string) *CustomError {
+	return &CustomError{
+		Code:    code,
+		Message: msg,
+	}
+}

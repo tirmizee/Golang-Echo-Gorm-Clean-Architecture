@@ -21,7 +21,8 @@ func GlobalErrorHandler(e *echo.Echo) func(error, echo.Context) {
 			httpError.Message = config.ERRConfig[code]
 			c.Logger().Error(c.JSON(http.StatusOK, httpError))
 		} else {
-			e.DefaultHTTPErrorHandler(err, c)
+			httpError := commons.NewCustomErrorMsg("ERR999", "Internal server error")
+			c.Logger().Error(c.JSON(http.StatusOK, httpError))
 		}
 
 	}

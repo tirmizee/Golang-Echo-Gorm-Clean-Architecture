@@ -32,5 +32,3 @@ func getMessages(c echo.Context, i []interface{}) []interface{} {
 	messages = append(messages, i...)
 	return messages
 }
-
-func init() {}
