@@ -2,7 +2,7 @@ package user
 
 import (
 	log "clean-architect/commons/log"
-	commons "clean-architect/commons/transfer"
+	"clean-architect/commons/transfer"
 	constants "clean-architect/constant"
 	"clean-architect/repository"
 	"errors"
@@ -34,7 +34,7 @@ func (s *userService) FindByID(c echo.Context, id string) (*UserRes, error) {
 	user, err := s.userRepo.FindById(id)
 
 	if errors.Is(err, gorm.ErrRecordNotFound) {
-		return nil, commons.NewCustomError(constants.ERR001)
+		return nil, transfer.NewCustomError(constants.ERR001)
 	}
 
 	if err != nil {
@@ -53,7 +53,7 @@ func (s *userService) AllUser(c echo.Context) ([]UserRes, error) {
 	users, err := s.userRepo.FindAll()
 
 	if errors.Is(err, gorm.ErrRecordNotFound) {
-		return nil, commons.NewCustomError(constants.ERR001)
+		return nil, transfer.NewCustomError(constants.ERR001)
 	}
 
 	if err != nil {

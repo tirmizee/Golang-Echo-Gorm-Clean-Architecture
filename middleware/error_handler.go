@@ -2,7 +2,7 @@ package middleware
 
 import (
 	"clean-architect/commons/log"
-	commons "clean-architect/commons/transfer"
+	"clean-architect/commons/transfer"
 	"clean-architect/config"
 	constants "clean-architect/constant"
 	"errors"
@@ -20,24 +20,24 @@ func GlobalErrorHandler(e *echo.Echo) func(error, echo.Context) {
 			return
 		}
 
-		if httpError, ok := err.(*commons.CustomError); ok {
+		if httpError, ok := err.(*transfer.CustomError); ok {
 			rejectErrMessage(c, httpError)
 			return
 		}
 
 		switch {
 		case errors.Is(err, gorm.ErrRecordNotFound):
-			httpError := commons.NewCustomError(constants.ERR002)
+			httpError := transfer.NewCustomError(constants.ERR002)
 			rejectErrMessage(c, httpError)
 		case errors.Is(err, gorm.ErrInvalidData):
-			httpError := commons.NewCustomError(constants.ERR003)
+			httpError := transfer.NewCustomError(constants.ERR003)
 			rejectErrMessage(c, httpError)
 		case errors.Is(err, gorm.ErrInvalidValueOfLength):
-			httpError := commons.NewCustomError(constants.ERR004)
+			httpError := transfer.NewCustomError(constants.ERR004)
 			rejectErrMessage(c, httpError)
 		default:
 			log.InfoWithID(c, err.Error())
-			httpError := commons.NewCustomError(constants.ERR999)
+			httpError := transfer.NewCustomError(constants.ERR999)
 			rejectErrMessage(c, httpError)
 
 		}
@@ -45,7 +45,7 @@ func GlobalErrorHandler(e *echo.Echo) func(error, echo.Context) {
 	}
 }
 
-func rejectErrMessage(c echo.Context, err *commons.CustomError) {
+func rejectErrMessage(c echo.Context, err *transfer.CustomError) {
 	code := strings.ToLower(err.Code)
 	err.Message = config.ERRConfig[code]
 	c.Logger().Error(c.JSON(http.StatusOK, err))
