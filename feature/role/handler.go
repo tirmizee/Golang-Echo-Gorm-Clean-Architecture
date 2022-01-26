@@ -25,12 +25,12 @@ func (h *Handler) FindByIDHandler(c echo.Context) error {
 	id := c.Param("id")
 
 	res, err := h.service.FindByID(c, id)
+
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		c.JSON(http.StatusOK, "Not found")
+	}
+
 	if err != nil {
-
-		if errors.Is(err, gorm.ErrRecordNotFound) {
-			c.JSON(http.StatusOK, "Not found")
-		}
-
 		return err
 	}
 
@@ -41,12 +41,12 @@ func (h *Handler) AllRoleHandler(c echo.Context) error {
 	log.InfoWithID(c, "AllRoleHandler")
 
 	res, err := h.service.AllRole(c)
+
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		c.JSON(http.StatusOK, "Not found")
+	}
+
 	if err != nil {
-
-		if errors.Is(err, gorm.ErrRecordNotFound) {
-			c.JSON(http.StatusOK, "Not found")
-		}
-
 		return err
 	}
 

@@ -11,11 +11,11 @@ services:
       MYSQL_DATABASE: example
       MYSQL_USER: user
       MYSQL_PASSWORD: pass
-  redis:
-    image: 'bitnami/redis:latest'
-    environment:
-      - REDIS_PASSWORD=password123
-      - REDIS_PORT_NUMBER=7000
-    command: /opt/bitnami/scripts/redis/run.sh --maxmemory 10mb
-    ports:
-      - '7000:7000'
+  # redis:
+  #   image: 'bitnami/redis:latest'
+  #   environment:
+  #     - REDIS_PASSWORD=password123
+  #     - REDIS_PORT_NUMBER=7000
+  #   command: /opt/bitnami/scripts/redis/run.sh --maxmemory 10mb
+  #   ports:
+  #     - '7000:7000'
