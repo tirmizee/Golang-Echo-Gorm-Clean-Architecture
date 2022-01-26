@@ -1,7 +1,7 @@
 package user
 
 import (
-	"clean-architect/commons/log"
+	log "clean-architect/commons/log"
 	commons "clean-architect/commons/transfer"
 	constants "clean-architect/constant"
 	"clean-architect/repository"

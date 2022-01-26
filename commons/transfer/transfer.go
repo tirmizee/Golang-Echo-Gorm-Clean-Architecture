@@ -1,4 +1,4 @@
-package transfer
+package commons
 
 import constants "clean-architect/constant"
 
@@ -9,11 +9,17 @@ type Base struct {
 }
 
 // error transfer
-
 type CustomError struct {
 	Base
 }
 
+// success transfer
+type Success struct {
+	Base
+	Data interface{} `json:"data"`
+}
+
+// method of error transfer
 func (e *CustomError) Error() string {
 	return e.Code + ": " + e.Message
 }
@@ -33,13 +39,6 @@ func NewCustomErrorMsg(code string, msg string) *CustomError {
 			Message: msg,
 		},
 	}
-}
-
-//success transfer
-
-type Success struct {
-	Base
-	Data interface{} `json:"data"`
 }
 
 func NewSuccess(data interface{}) *Success {

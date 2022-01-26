@@ -1,7 +1,7 @@
 package role
 
 import (
-	"clean-architect/commons/log"
+	log "clean-architect/commons/log"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
