@@ -3,6 +3,7 @@ package middleware
 import (
 	commons "clean-architect/commons/error"
 	"clean-architect/config"
+	constants "clean-architect/constant"
 	"errors"
 	"net/http"
 	"strings"
@@ -25,16 +26,16 @@ func GlobalErrorHandler(e *echo.Echo) func(error, echo.Context) {
 
 		switch {
 		case errors.Is(err, gorm.ErrRecordNotFound):
-			httpError := commons.NewCustomError("ERR002")
+			httpError := commons.NewCustomError(constants.ERR002)
 			rejectErrMessage(c, httpError)
 		case errors.Is(err, gorm.ErrInvalidData):
-			httpError := commons.NewCustomError("ERR003")
+			httpError := commons.NewCustomError(constants.ERR003)
 			rejectErrMessage(c, httpError)
 		case errors.Is(err, gorm.ErrInvalidValueOfLength):
-			httpError := commons.NewCustomError("ERR004")
+			httpError := commons.NewCustomError(constants.ERR004)
 			rejectErrMessage(c, httpError)
 		default:
-			httpError := commons.NewCustomError("ERR999")
+			httpError := commons.NewCustomError(constants.ERR999)
 			rejectErrMessage(c, httpError)
 
 		}

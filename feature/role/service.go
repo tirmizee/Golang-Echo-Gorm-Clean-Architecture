@@ -2,6 +2,7 @@ package role
 
 import (
 	commons "clean-architect/commons/error"
+	constants "clean-architect/constant"
 	"clean-architect/repository"
 	"errors"
 
@@ -30,7 +31,7 @@ func (s *roleService) FindByID(c echo.Context, id string) (*RoleRes, error) {
 	role, err := s.roleRepo.FindById(id)
 
 	if errors.Is(err, gorm.ErrRecordNotFound) {
-		return nil, commons.NewCustomError("ERR001")
+		return nil, commons.NewCustomError(constants.ERR001)
 	}
 
 	if err != nil {
@@ -49,7 +50,7 @@ func (s *roleService) AllRole(c echo.Context) ([]RoleRes, error) {
 	roles, err := s.roleRepo.FindAll()
 
 	if errors.Is(err, gorm.ErrRecordNotFound) {
-		return nil, commons.NewCustomError("ERR001")
+		return nil, commons.NewCustomError(constants.ERR001)
 	}
 
 	if err != nil {
