@@ -10,3 +10,10 @@ redis:
   port: 7000
   pass: password123
   index: 0
+
+errors:
+  ERR001: Record not found
+  ERR002: Record not found
+  ERR003: Record not found
+  ERR004: Record not found
+  ERR005: Record not found

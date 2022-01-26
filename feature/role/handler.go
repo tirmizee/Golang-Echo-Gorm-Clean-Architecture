@@ -2,11 +2,9 @@ package role
 
 import (
 	"clean-architect/commons/log"
-	"errors"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
-	"gorm.io/gorm"
 )
 
 type Handler struct {
@@ -26,10 +24,6 @@ func (h *Handler) FindByIDHandler(c echo.Context) error {
 
 	res, err := h.service.FindByID(c, id)
 
-	if errors.Is(err, gorm.ErrRecordNotFound) {
-		c.JSON(http.StatusOK, "Not found")
-	}
-
 	if err != nil {
 		return err
 	}
@@ -41,10 +35,6 @@ func (h *Handler) AllRoleHandler(c echo.Context) error {
 	log.InfoWithID(c, "AllRoleHandler")
 
 	res, err := h.service.AllRole(c)
-
-	if errors.Is(err, gorm.ErrRecordNotFound) {
-		c.JSON(http.StatusOK, "Not found")
-	}
 
 	if err != nil {
 		return err

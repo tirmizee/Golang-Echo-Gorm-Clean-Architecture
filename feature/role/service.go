@@ -1,7 +1,9 @@
 package role
 
 import (
+	commons "clean-architect/commons/error"
 	"clean-architect/repository"
+	"errors"
 
 	"github.com/jinzhu/copier"
 	"github.com/labstack/echo/v4"
@@ -27,6 +29,10 @@ func (s *roleService) FindByID(c echo.Context, id string) (*RoleRes, error) {
 
 	role, err := s.roleRepo.FindById(id)
 
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		return nil, commons.NewCustomError("ERR001")
+	}
+
 	if err != nil {
 		return nil, err
 	}
@@ -41,6 +47,11 @@ func (s *roleService) FindByID(c echo.Context, id string) (*RoleRes, error) {
 func (s *roleService) AllRole(c echo.Context) ([]RoleRes, error) {
 
 	roles, err := s.roleRepo.FindAll()
+
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		return nil, commons.NewCustomError("ERR001")
+	}
+
 	if err != nil {
 		return nil, err
 	}

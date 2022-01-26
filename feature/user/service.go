@@ -1,10 +1,13 @@
 package user
 
 import (
+	commons "clean-architect/commons/error"
 	"clean-architect/repository"
+	"errors"
 
 	"github.com/jinzhu/copier"
 	"github.com/labstack/echo/v4"
+	"gorm.io/gorm"
 )
 
 type UserService interface {
@@ -23,12 +26,32 @@ func NewUserService(u repository.UserRepository) *userService {
 }
 
 func (s *userService) FindByID(c echo.Context, id string) (*UserRes, error) {
-	return nil, nil
+
+	user, err := s.userRepo.FindById(id)
+
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		return nil, commons.NewCustomError("ERR001")
+	}
+
+	if err != nil {
+		return nil, err
+	}
+
+	// manual map dto
+	var res UserRes
+	copier.Copy(&res, &user)
+
+	return &res, nil
 }
 
 func (s *userService) AllUser(c echo.Context) ([]UserRes, error) {
 
 	users, err := s.userRepo.FindAll()
+
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		return nil, commons.NewCustomError("ERR001")
+	}
+
 	if err != nil {
 		return nil, err
 	}

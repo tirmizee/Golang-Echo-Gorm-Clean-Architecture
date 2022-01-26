@@ -4,6 +4,7 @@ import (
 	"clean-architect/config/db"
 	"clean-architect/feature/role"
 	"clean-architect/feature/user"
+	_middleware "clean-architect/middleware"
 	"clean-architect/repository"
 	"clean-architect/repository/mysql"
 
@@ -11,6 +12,10 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/labstack/gommon/log"
 )
+
+func SetupGlobalErrorHandler(e *echo.Echo) {
+	e.HTTPErrorHandler = _middleware.GlobalErrorHandler(e)
+}
 
 func SetupLogger(e *echo.Echo) {
 	e.Logger.SetLevel(log.DEBUG)
@@ -47,7 +52,7 @@ func SetupRoute(e *echo.Echo) {
 	// routes
 	g := e.Group("/admin")
 	g.GET("/users", userHandler.AllUserHandler)
-	g.GET("/users/:id", userHandler.AllUserHandler)
+	g.GET("/users/:id", userHandler.FindByIDHandler)
 	g.GET("/roles", roleHandler.AllRoleHandler)
 	g.GET("/roles/:id", roleHandler.FindByIDHandler)
 

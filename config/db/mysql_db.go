@@ -14,11 +14,11 @@ func NewMysqlDB() *gorm.DB {
 
 	// dns config
 	dns := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
-		config.GetDbConfigProp().User,
-		config.GetDbConfigProp().Pass,
-		config.GetDbConfigProp().Host,
-		config.GetDbConfigProp().Port,
-		config.GetDbConfigProp().Dbname)
+		config.DBConfig.User,
+		config.DBConfig.Pass,
+		config.DBConfig.Host,
+		config.DBConfig.Port,
+		config.DBConfig.Dbname)
 
 	// mysql config
 	mysqlConfig := mysql.Config{

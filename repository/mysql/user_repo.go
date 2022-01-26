@@ -16,9 +16,15 @@ func NewUserRepository(db *gorm.DB) *UserRepository {
 
 func (r *UserRepository) FindById(id string) (*repository.User, error) {
 
-	// var user repository.User
+	var user repository.User
 
-	return nil, nil
+	statement := r.db.Table("users").Where("id = ?", id).First(&user)
+
+	if err := statement.Error; err != nil {
+		return nil, err
+	}
+
+	return &user, nil
 }
 
 func (r *UserRepository) FindAll() ([]repository.User, error) {

@@ -9,9 +9,8 @@ func (e *CustomError) Error() string {
 	return e.Code + ": " + e.Message
 }
 
-func NewCustomError(code string, msg string) *CustomError {
+func NewCustomError(code string) *CustomError {
 	return &CustomError{
-		Code:    code,
-		Message: msg,
+		Code: code,
 	}
 }

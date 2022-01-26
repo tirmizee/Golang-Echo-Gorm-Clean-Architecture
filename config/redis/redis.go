@@ -8,7 +8,7 @@ import (
 
 func NewRedisClient() *redis.Client {
 
-	redisConfigProp := config.GetRdConfigProp()
+	redisConfigProp := config.RDConfig
 
 	client := redis.NewClient(&redis.Options{
 		Addr:     redisConfigProp.Host + ":" + redisConfigProp.Port,

@@ -19,6 +19,7 @@ func NewHandler(s UserService) *Handler {
 func (h *Handler) AllUserHandler(c echo.Context) error {
 
 	res, err := h.service.AllUser(c)
+
 	if err != nil {
 		return err
 	}
@@ -31,6 +32,7 @@ func (h *Handler) FindByIDHandler(c echo.Context) error {
 	id := c.Param("id")
 
 	res, err := h.service.FindByID(c, id)
+
 	if err != nil {
 		return err
 	}

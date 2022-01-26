@@ -8,17 +8,12 @@ import (
 )
 
 var (
-	dbConfig DBConfigProp
-	rdConfig RedisConfigProp
+	DBConfig  DBConfigProp
+	RDConfig  RedisConfigProp
+	ERRConfig ErrorConfigProp
 )
 
-func GetDbConfigProp() DBConfigProp {
-	return dbConfig
-}
-
-func GetRdConfigProp() RedisConfigProp {
-	return rdConfig
-}
+type ErrorConfigProp map[string]string
 
 type DBConfigProp struct {
 	Host        string
@@ -38,22 +33,26 @@ type RedisConfigProp struct {
 	Index int
 }
 
+func initErrConfig() {
+	ERRConfig = viper.GetStringMapString("errors")
+}
+
 func initDbConfigProp() {
-	dbConfig.Host = viper.GetString("db.host")
-	dbConfig.Port = viper.GetString("db.port")
-	dbConfig.User = viper.GetString("db.user")
-	dbConfig.Pass = viper.GetString("db.pass")
-	dbConfig.Dbname = viper.GetString("db.dbname")
-	dbConfig.MaxPool = viper.GetInt("db.pool.max")
-	dbConfig.IdlePool = viper.GetInt("db.pool.idle")
-	dbConfig.MaxLifetime = viper.GetDuration("db.pool.lifetime")
+	DBConfig.Host = viper.GetString("db.host")
+	DBConfig.Port = viper.GetString("db.port")
+	DBConfig.User = viper.GetString("db.user")
+	DBConfig.Pass = viper.GetString("db.pass")
+	DBConfig.Dbname = viper.GetString("db.dbname")
+	DBConfig.MaxPool = viper.GetInt("db.pool.max")
+	DBConfig.IdlePool = viper.GetInt("db.pool.idle")
+	DBConfig.MaxLifetime = viper.GetDuration("db.pool.lifetime")
 }
 
 func initRdConfigProp() {
-	rdConfig.Host = viper.GetString("redis.host")
-	rdConfig.Port = viper.GetString("redis.port")
-	rdConfig.Pass = viper.GetString("redis.pass")
-	rdConfig.Index = viper.GetInt("redis.index")
+	RDConfig.Host = viper.GetString("redis.host")
+	RDConfig.Port = viper.GetString("redis.port")
+	RDConfig.Pass = viper.GetString("redis.pass")
+	RDConfig.Index = viper.GetInt("redis.index")
 }
 
 func initializeViper() {
@@ -75,4 +74,5 @@ func init() {
 	initializeViper()
 	initDbConfigProp()
 	initRdConfigProp()
+	initErrConfig()
 }
