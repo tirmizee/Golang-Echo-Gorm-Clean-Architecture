@@ -37,3 +37,12 @@ func (r *UserRepository) FindAll() ([]repository.User, error) {
 
 	return users, nil
 }
+
+func (r *UserRepository) Create(user *repository.User) (*repository.User, error) {
+
+	if err := r.db.Create(user).Error; err != nil {
+		return nil, err
+	}
+
+	return user, nil
+}

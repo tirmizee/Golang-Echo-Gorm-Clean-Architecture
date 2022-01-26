@@ -53,6 +53,7 @@ func SetupRoute(e *echo.Echo) {
 	g := e.Group("/admin")
 	g.GET("/users", userHandler.AllUserHandler)
 	g.GET("/users/:id", userHandler.FindByIDHandler)
+	g.POST("/users/create", userHandler.CreateUserHandler)
 	g.GET("/roles", roleHandler.AllRoleHandler)
 	g.GET("/roles/:id", roleHandler.FindByIDHandler)
 

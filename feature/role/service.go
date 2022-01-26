@@ -1,7 +1,7 @@
 package role
 
 import (
-	commons "clean-architect/commons/error"
+	commons "clean-architect/commons/transfer"
 	constants "clean-architect/constant"
 	"clean-architect/repository"
 	"errors"

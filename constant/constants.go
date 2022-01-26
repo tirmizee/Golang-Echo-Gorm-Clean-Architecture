@@ -6,6 +6,10 @@ const (
 )
 
 const (
+	SUCCESS = "000000"
+)
+
+const (
 	ERR001 = "ERR001"
 	ERR002 = "ERR002"
 	ERR003 = "ERR003"

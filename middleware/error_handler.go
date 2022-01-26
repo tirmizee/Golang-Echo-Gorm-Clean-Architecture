@@ -1,7 +1,8 @@
 package middleware
 
 import (
-	commons "clean-architect/commons/error"
+	"clean-architect/commons/log"
+	commons "clean-architect/commons/transfer"
 	"clean-architect/config"
 	constants "clean-architect/constant"
 	"errors"
@@ -35,6 +36,7 @@ func GlobalErrorHandler(e *echo.Echo) func(error, echo.Context) {
 			httpError := commons.NewCustomError(constants.ERR004)
 			rejectErrMessage(c, httpError)
 		default:
+			log.InfoWithID(c, err.Error())
 			httpError := commons.NewCustomError(constants.ERR999)
 			rejectErrMessage(c, httpError)
 

@@ -27,6 +27,23 @@ func (h *Handler) AllUserHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, res)
 }
 
+func (h *Handler) CreateUserHandler(c echo.Context) error {
+
+	var req CreateUserReq
+
+	if err := c.Bind(&req); err != nil {
+		return err
+	}
+
+	res, err := h.service.CreateUser(c, &req)
+
+	if err != nil {
+		return err
+	}
+
+	return c.JSON(http.StatusOK, res)
+}
+
 func (h *Handler) FindByIDHandler(c echo.Context) error {
 
 	id := c.Param("id")
