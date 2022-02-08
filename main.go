@@ -6,6 +6,10 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+func Hello() string {
+	return "hello world"
+}
+
 func main() {
 
 	var server = echo.New()
